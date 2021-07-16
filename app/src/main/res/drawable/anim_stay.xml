@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false">
+    <item
+        android:drawable="@drawable/ic_stay_0"
+        android:duration="@integer/anim_duration" />
+    <item
+        android:drawable="@drawable/ic_stay_1"
+        android:duration="@integer/anim_duration" />
+    <item
+        android:drawable="@drawable/ic_stay_2"
+        android:duration="@integer/anim_duration" />
+    <item
+        android:drawable="@drawable/ic_stay_3"
+        android:duration="@integer/anim_duration" />
+    <item
+        android:drawable="@drawable/ic_stay_4"
+        android:duration="@integer/anim_duration" />
+    <item
+        android:drawable="@drawable/ic_stay_5"
+        android:duration="@integer/anim_duration" />
+    <item
+        android:drawable="@drawable/ic_stay_6"
+        android:duration="@integer/anim_duration" />
+    <item
+        android:drawable="@drawable/ic_stay_7"
+        android:duration="@integer/anim_duration" />
+    <item
+        android:drawable="@drawable/ic_stay_8"
+        android:duration="@integer/anim_duration" />
+    <item
+        android:drawable="@drawable/ic_stay_9"
+        android:duration="@integer/anim_duration" />
+    <item
+        android:drawable="@drawable/ic_stay_10"
+        android:duration="@integer/anim_duration" />
+    <item
+        android:drawable="@drawable/ic_stay_11"
+        android:duration="@integer/anim_duration" />
+    <item
+        android:drawable="@drawable/ic_stay_12"
+        android:duration="@integer/anim_duration" />
+    <item
+        android:drawable="@drawable/ic_stay_13"
+        android:duration="@integer/anim_duration" />
+    <item
+        android:drawable="@drawable/ic_stay_14"
+        android:duration="@integer/anim_duration" />
+    <item
+        android:drawable="@drawable/ic_stay_15"
+        android:duration="@integer/anim_duration" />
+</animation-list>

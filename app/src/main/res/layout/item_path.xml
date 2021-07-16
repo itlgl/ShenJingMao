@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/layout_nine_dot_0"
+        layout="@layout/item_nine_dot_end_padding" />
+
+    <include
+        android:id="@+id/layout_nine_dot_1"
+        layout="@layout/item_nine_dot_start_padding" />
+
+    <include
+        android:id="@+id/layout_nine_dot_2"
+        layout="@layout/item_nine_dot_end_padding" />
+
+    <include
+        android:id="@+id/layout_nine_dot_3"
+        layout="@layout/item_nine_dot_start_padding" />
+
+    <include
+        android:id="@+id/layout_nine_dot_4"
+        layout="@layout/item_nine_dot_end_padding" />
+
+    <include
+        android:id="@+id/layout_nine_dot_5"
+        layout="@layout/item_nine_dot_start_padding" />
+
+    <include
+        android:id="@+id/layout_nine_dot_6"
+        layout="@layout/item_nine_dot_end_padding" />
+
+    <include
+        android:id="@+id/layout_nine_dot_7"
+        layout="@layout/item_nine_dot_start_padding" />
+
+    <include
+        android:id="@+id/layout_nine_dot_8"
+        layout="@layout/item_nine_dot_end_padding" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

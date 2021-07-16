@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">围住神经猫</string>
+
+    <string name="game_fail_text_1">你没有抓住神！经！猫！！</string>
+    <string name="game_fail_text_2">精神病院长又发神经病了！</string>
+
+    <string name="game_success_text_1">您用%s步抓住了神经猫</string>
+    <string name="game_success_text_2">神经全国排名%s位</string>
+    <string name="game_success_text_3">击败了精神病院%s的精神病患者</string>
+    <string name="game_success_text_4">获得称号：%s</string>
+
+    <string-array name="game_success_title_1">
+        <item>塞外高手</item>
+        <item>神精病博士</item>
+        <item>神经大神</item>
+        <item>你是我的小苹果</item>
+        <item>院长派来的救兵</item>
+        <item>精神病院长</item>
+        <item>扫地僧</item>
+        <item>传说中的高手</item>
+        <item>风骚的少年</item>
+        <item>白天睡觉喵</item>
+        <item>隔壁王伯伯</item>
+    </string-array>
+
+    <string-array name="game_success_title_2">
+        <item>神经大条</item>
+        <item>我是处女座的</item>
+        <item>停不下来</item>
+        <item>你是我的小苹果</item>
+        <item>喵了个咪的</item>
+        <item>M78星人</item>
+        <item>凤姐夫</item>
+        <item>笑而不语</item>
+    </string-array>
+</resources>

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#666666"
+    android:clipChildren="false">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_title_bg"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/bg2"
+        app:layout_constraintDimensionRatio="h,640:420"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.itlgl.android.shenjingmao.GameView
+        android:id="@+id/game_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_title_bg" />
+
+    <FrameLayout
+        android:id="@+id/layout_start"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/iv_start"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/btn_start" />
+
+    </FrameLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_success"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_success_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/victory"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toTopOf="@+id/view_success_share"
+            app:layout_constraintDimensionRatio="h,448:338"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_success_top"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.4" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_success_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/game_success_text_1"
+                android:textColor="#f00"
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gl_success_top" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_success_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="#000"
+                android:shadowRadius="10"
+                android:text="@string/game_success_text_2"
+                android:textColor="#fff"
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_success_1" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_success_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/game_success_text_3"
+                android:textColor="#f00"
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_success_2" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_success_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/game_success_text_4"
+                android:textColor="#f00"
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_success_3" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/view_success_share"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/share_btn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="h,200:103"
+            app:layout_constraintEnd_toStartOf="@+id/view_success_replay"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_success_content" />
+
+        <View
+            android:id="@+id/view_success_replay"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/replay"
+            app:layout_constraintBottom_toBottomOf="@+id/view_success_share"
+            app:layout_constraintDimensionRatio="h,200:103"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/view_success_share"
+            app:layout_constraintTop_toTopOf="@+id/view_success_share" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_fail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        tools:visibility="gone">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_fail_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/failed"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toTopOf="@+id/view_fail_share"
+            app:layout_constraintDimensionRatio="h,448:361"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_fail_top"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <TextView
+                android:id="@+id/tv_fail_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/game_fail_text_1"
+                android:textColor="#f00"
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gl_fail_top" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_fail_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="#000"
+                android:shadowRadius="10"
+                android:text="@string/game_fail_text_2"
+                android:textColor="#fff"
+                android:textSize="25sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_fail_1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/view_fail_share"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/share_btn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="h,200:103"
+            app:layout_constraintEnd_toStartOf="@+id/view_fail_replay"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/layout_fail_content" />
+
+        <View
+            android:id="@+id/view_fail_replay"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/replay"
+            app:layout_constraintBottom_toBottomOf="@+id/view_fail_share"
+            app:layout_constraintDimensionRatio="h,200:103"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/view_fail_share"
+            app:layout_constraintTop_toTopOf="@+id/view_fail_share" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
