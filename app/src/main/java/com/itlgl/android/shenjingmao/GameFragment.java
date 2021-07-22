@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -58,7 +59,7 @@ public class GameFragment extends Fragment implements GameContract.View {
 
         // success view
         mBinding.layoutInner.viewSuccessShare.setOnClickListener(v -> {
-            System.out.println("成功分享按钮");
+            Toast.makeText(getContext(), R.string.game_share_tip, Toast.LENGTH_SHORT).show();
         });
         mBinding.layoutInner.viewSuccessReplay.setOnClickListener(v -> {
             hideAllDialogView();
@@ -67,7 +68,7 @@ public class GameFragment extends Fragment implements GameContract.View {
 
         // fail view
         mBinding.layoutInner.viewFailShare.setOnClickListener(v -> {
-            System.out.println("失败分享按钮");
+            Toast.makeText(getContext(), R.string.game_share_tip, Toast.LENGTH_SHORT).show();
         });
         mBinding.layoutInner.viewFailReplay.setOnClickListener(v -> {
             hideAllDialogView();
@@ -115,6 +116,7 @@ public class GameFragment extends Fragment implements GameContract.View {
         }
         mBinding.layoutInner.gameView.setCatPosition(crazyCat.x, crazyCat.y);
         mBinding.layoutInner.gameView.setCatState(false);
+        mBinding.layoutInner.gameView.setCatVisible(true);
     }
 
     @Override

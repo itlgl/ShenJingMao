@@ -9,6 +9,8 @@
     <string name="game_success_text_3">击败了精神病院%s的精神病患者</string>
     <string name="game_success_text_4">获得称号：%s</string>
 
+    <string name="game_share_tip">通知好友</string>
+
     <string-array name="game_success_title_1">
         <item>塞外高手</item>
         <item>神精病博士</item>

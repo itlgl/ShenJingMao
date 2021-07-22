@@ -16,13 +16,12 @@
         app:layout_constraintDimensionRatio="h,640:420"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.itlgl.android.shenjingmao.GameView
+    <com.itlgl.android.shenjingmao.GameView2
         android:id="@+id/game_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_title_bg" />
 
     <FrameLayout
@@ -64,50 +63,80 @@
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.4" />
 
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_success_left"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.06" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_success_right"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.93" />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_success_1"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="1"
                 android:text="@string/game_success_text_1"
                 android:textColor="#f00"
                 android:textSize="25sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:autoSizeMinTextSize="12sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintEnd_toEndOf="@+id/gl_success_right"
+                app:layout_constraintStart_toStartOf="@+id/gl_success_left"
                 app:layout_constraintTop_toBottomOf="@+id/gl_success_top" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_success_2"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="1"
                 android:shadowColor="#000"
                 android:shadowRadius="10"
                 android:text="@string/game_success_text_2"
                 android:textColor="#fff"
                 android:textSize="25sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:autoSizeMinTextSize="12sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintEnd_toEndOf="@+id/gl_success_right"
+                app:layout_constraintStart_toStartOf="@+id/gl_success_left"
                 app:layout_constraintTop_toBottomOf="@+id/tv_success_1" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_success_3"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="1"
                 android:text="@string/game_success_text_3"
                 android:textColor="#f00"
                 android:textSize="25sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:autoSizeMinTextSize="12sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintEnd_toEndOf="@+id/gl_success_right"
+                app:layout_constraintStart_toStartOf="@+id/gl_success_left"
                 app:layout_constraintTop_toBottomOf="@+id/tv_success_2" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_success_4"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="1"
                 android:text="@string/game_success_text_4"
                 android:textColor="#f00"
                 android:textSize="25sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:autoSizeMinTextSize="12sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintEnd_toEndOf="@+id/gl_success_right"
+                app:layout_constraintStart_toStartOf="@+id/gl_success_left"
                 app:layout_constraintTop_toBottomOf="@+id/tv_success_3" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -161,28 +190,50 @@
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.5" />
 
-            <TextView
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_fail_left"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.06" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_fail_right"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.93" />
+
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_fail_1"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="1"
                 android:text="@string/game_fail_text_1"
                 android:textColor="#f00"
                 android:textSize="25sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:autoSizeMinTextSize="12sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintEnd_toEndOf="@+id/gl_fail_right"
+                app:layout_constraintStart_toStartOf="@+id/gl_fail_left"
                 app:layout_constraintTop_toBottomOf="@+id/gl_fail_top" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tv_fail_2"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:gravity="center"
+                android:maxLines="1"
                 android:shadowColor="#000"
                 android:shadowRadius="10"
                 android:text="@string/game_fail_text_2"
                 android:textColor="#fff"
                 android:textSize="25sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:autoSizeMinTextSize="12sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintEnd_toEndOf="@+id/gl_fail_right"
+                app:layout_constraintStart_toStartOf="@+id/gl_fail_left"
                 app:layout_constraintTop_toBottomOf="@+id/tv_fail_1" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
