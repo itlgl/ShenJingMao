@@ -222,6 +222,7 @@ public class GameView2 extends View {
             // 点在了上方空白区域
             dotCol = -1;
         }
+        //System.out.println("dotRow=" + dotRow + ",dotCol=" + dotCol);
 
         int action = event.getAction();
         switch (action & MotionEvent.ACTION_MASK) {
@@ -229,33 +230,33 @@ public class GameView2 extends View {
                 mDotPointWhenTouchDown.set(dotRow, dotCol);
                 break;
             case MotionEvent.ACTION_MOVE:
-                if(!(mDotPointWhenTouchDown.x == dotRow || mDotPointWhenTouchDown.y == dotCol)) {
+                if(!(mDotPointWhenTouchDown.x == dotRow && mDotPointWhenTouchDown.y == dotCol)) {
                     // 设置一个非法值
                     mDotPointWhenTouchDown.set(-1, -1);
                 }
                 break;
             case MotionEvent.ACTION_UP:
-                if(!(mDotPointWhenTouchDown.x == dotRow || mDotPointWhenTouchDown.y == dotCol)) {
+                if(!(mDotPointWhenTouchDown.x == dotRow && mDotPointWhenTouchDown.y == dotCol)) {
                     // 设置一个非法值
                     mDotPointWhenTouchDown.set(-1, -1);
                 }
-                if(dotRow < 0 || dotCol < 0) {
+                if(mDotPointWhenTouchDown.x < 0 || mDotPointWhenTouchDown.y < 0) {
                     // 如果之前滑动出了当前dot的范围，那么认为当前点击事件无效
                     break;
                 }
-                if(dotRow >= MaoMap.MAX || dotCol >= MaoMap.MAX) {
+                if(mDotPointWhenTouchDown.x >= MaoMap.MAX || mDotPointWhenTouchDown.y >= MaoMap.MAX) {
                     // 如果算出来的x/y超出了数组限制，不做处理
                     break;
                 }
-                if(mMap[dotRow][dotCol] != MaoMap.POINT_EMPTY) {
+                if(mMap[mDotPointWhenTouchDown.x][mDotPointWhenTouchDown.y] != MaoMap.POINT_EMPTY) {
                     // 如果已经选中，那么不响应
                     break;
                 }
                 // 刷新map，将点置为墙
-                mMap[dotRow][dotCol] = MaoMap.POINT_WALL;
+                mMap[mDotPointWhenTouchDown.x][mDotPointWhenTouchDown.y] = MaoMap.POINT_WALL;
                 invalidate();
                 if(mDotClickListener != null) {
-                    mDotClickListener.onDotClick(dotRow, dotCol);
+                    mDotClickListener.onDotClick(mDotPointWhenTouchDown.x, mDotPointWhenTouchDown.y);
                 }
                 break;
         }
