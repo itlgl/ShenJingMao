@@ -21,10 +21,8 @@ public interface GameContract {
     }
 
     interface Presenter {
-        void startGame();
+        void startGame(int max);
 
         void userInput(int row, int col);
-
-
     }
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_normal"
+        android:title="@string/menu_text_normal"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/menu_small"
+        android:title="@string/menu_text_small"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_middle"
+        android:title="@string/menu_text_middle"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/menu_hard"
+        android:title="@string/menu_text_hard"
+        app:showAsAction="never" />
+</menu>

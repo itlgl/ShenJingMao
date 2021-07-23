@@ -18,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 
+import com.itlgl.android.shenjingmao.algorithm.Constants;
 import com.itlgl.android.shenjingmao.algorithm.MaoMap;
 import com.itlgl.android.shenjingmao.algorithm.Point;
 
@@ -37,7 +38,7 @@ public class GameView2 extends View {
     private int mDotPadding;
     private Paint mCircleNormalPaint;
     private Paint mCircleWallPaint;
-    private int[][] mMap = new int[MaoMap.MAX][MaoMap.MAX];
+    private int[][] mMap; // init in initAttrs
     private Point mCatPosition = new Point();
     private boolean mDrawCat = false;
     private GameView.DotClickListener mDotClickListener;
@@ -57,12 +58,23 @@ public class GameView2 extends View {
 
     private void initAttrs(Context context, AttributeSet attrs) {
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.GameView2);
-        mDotCount = ta.getInt(R.styleable.GameView2_dotCount, MaoMap.MAX);
+        mDotCount = ta.getInt(R.styleable.GameView2_dotCount, Constants.MAX_DEFAULT);
         if(mDotCount <= 0) {
-            mDotCount = MaoMap.MAX;
+            mDotCount = Constants.MAX_DEFAULT;
         }
         mDotPadding = ta.getDimensionPixelSize(R.styleable.GameView2_dotPadding, 5);
         ta.recycle();
+
+        mMap = new int[mDotCount][mDotCount];
+    }
+
+    public void setDotCount(int dotCount) {
+        if(dotCount <= 0) {
+            dotCount = Constants.MAX_DEFAULT;
+        }
+        mDotCount = dotCount;
+        mMap = new int[mDotCount][mDotCount];
+        mDrawCat = false;
     }
 
     private void initView() {
@@ -85,7 +97,7 @@ public class GameView2 extends View {
         mCircleWallPaint.setColor(0xFFFF845E);
         mCircleWallPaint.setStyle(Paint.Style.FILL_AND_STROKE);
 
-        mCatPosition.set(MaoMap.MAX / 2, MaoMap.MAX / 2);
+        mCatPosition.set(mDotCount / 2, mDotCount / 2);
     }
 
     public void setDotClickListener(GameView.DotClickListener listener) {
@@ -120,14 +132,14 @@ public class GameView2 extends View {
     }
 
     public void setDotsSelected(List<Point> dotPoints) {
-        for (int i = 0; i < MaoMap.MAX; i++) {
-            for (int j = 0; j < MaoMap.MAX; j++) {
+        for (int i = 0; i < mDotCount; i++) {
+            for (int j = 0; j < mDotCount; j++) {
                 mMap[i][j] = MaoMap.POINT_EMPTY;
             }
         }
         if(dotPoints != null && dotPoints.size() > 0) {
             for (Point point : dotPoints) {
-                if(point.x < 0 || point.x >= MaoMap.MAX || point.y < 0 || point.y >= MaoMap.MAX) {
+                if(point.x < 0 || point.x >= mDotCount || point.y < 0 || point.y >= mDotCount) {
                     continue;
                 }
                 mMap[point.x][point.y] = MaoMap.POINT_WALL;
@@ -196,10 +208,6 @@ public class GameView2 extends View {
         return (int) (catHeight - dotWidth * 3f / 4f);
     }
 
-    private Point getDotPointByTouchPosition(float ex, float ey) {
-        return new Point();
-    }
-
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -244,7 +252,7 @@ public class GameView2 extends View {
                     // 如果之前滑动出了当前dot的范围，那么认为当前点击事件无效
                     break;
                 }
-                if(mDotPointWhenTouchDown.x >= MaoMap.MAX || mDotPointWhenTouchDown.y >= MaoMap.MAX) {
+                if(mDotPointWhenTouchDown.x >= mDotCount || mDotPointWhenTouchDown.y >= mDotCount) {
                     // 如果算出来的x/y超出了数组限制，不做处理
                     break;
                 }
@@ -276,10 +284,10 @@ public class GameView2 extends View {
 //        System.out.println("catImgOutcropHeight=" + dotWidth);
 //        System.out.println("dotRadius=" + dotRadius);
 
-        for (int row = 0; row < MaoMap.MAX; row++) {
+        for (int row = 0; row < mDotCount; row++) {
             int cxStart = row % 2 == 0 ? dotRadius : dotWidth;
             int cy = catImgOutcropHeight + dotRadius + dotWidth * row;
-            for (int col = 0; col < MaoMap.MAX; col++) {
+            for (int col = 0; col < mDotCount; col++) {
                 int cx = cxStart + (dotWidth + mDotPadding) * col;
                 canvas.drawCircle(cx, cy, dotRadius,
                         mMap[row][col] == MaoMap.POINT_EMPTY ? mCircleNormalPaint : mCircleWallPaint);

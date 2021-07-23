@@ -1,5 +1,6 @@
 package com.itlgl.android.shenjingmao;
 
+import com.itlgl.android.shenjingmao.algorithm.Constants;
 import com.itlgl.android.shenjingmao.algorithm.MaoMap;
 import com.itlgl.android.shenjingmao.algorithm.NextStep;
 import com.itlgl.android.shenjingmao.algorithm.Point;
@@ -11,16 +12,23 @@ import java.util.List;
  */
 public class GamePresenter implements GameContract.Presenter {
     private final GameContract.View mView;
-    private final MaoMap mMaoMap = new MaoMap();
     private int mTotalStep = 0;
     private boolean hasBeSurrounded = false;
+    private int mMax = Constants.MAX_DEFAULT;
+    private MaoMap mMaoMap;
 
     public GamePresenter(GameContract.View view) {
         mView = view;
     }
 
     @Override
-    public void startGame() {
+    public void startGame(int max) {
+        if(max <= Constants.MAX_DEFAULT) {
+            max = Constants.MAX_DEFAULT;
+        }
+        mMax = max;
+        mMaoMap = new MaoMap(mMax);
+
         mTotalStep = 0;
         hasBeSurrounded = false;
         mMaoMap.randomMap();
@@ -40,7 +48,7 @@ public class GamePresenter implements GameContract.Presenter {
 
         // 如果已经在边界
         Point catPoint = mMaoMap.getCatPoint();
-        if(MaoMap.isBorderPoint(catPoint)) {
+        if(MaoMap.isBorderPoint(catPoint.x, catPoint.y, mMax)) {
             mView.handleGameFail();
             return;
         }

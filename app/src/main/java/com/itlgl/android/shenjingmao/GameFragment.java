@@ -1,15 +1,19 @@
 package com.itlgl.android.shenjingmao;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import com.itlgl.android.shenjingmao.algorithm.Constants;
 import com.itlgl.android.shenjingmao.algorithm.Point;
 import com.itlgl.android.shenjingmao.databinding.FragmentGameBinding;
 
@@ -22,6 +26,7 @@ public class GameFragment extends Fragment implements GameContract.View {
 
     private FragmentGameBinding mBinding;
     private GameContract.Presenter mPresenter;
+    private int mMax = Constants.MAX_DEFAULT;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,6 +49,7 @@ public class GameFragment extends Fragment implements GameContract.View {
         initView();
     }
 
+    @SuppressLint("NonConstantResourceId")
     private void initView() {
         // 当弹框显示时，拦截gameview点击事件
         View.OnClickListener layoutClickListener = v -> {
@@ -54,7 +60,7 @@ public class GameFragment extends Fragment implements GameContract.View {
 
         mBinding.layoutInner.ivStart.setOnClickListener(v -> {
             hideAllDialogView();
-            mPresenter.startGame();
+            mPresenter.startGame(mMax);
         });
 
         // success view
@@ -63,7 +69,7 @@ public class GameFragment extends Fragment implements GameContract.View {
         });
         mBinding.layoutInner.viewSuccessReplay.setOnClickListener(v -> {
             hideAllDialogView();
-            mPresenter.startGame();
+            mPresenter.startGame(mMax);
         });
 
         // fail view
@@ -72,7 +78,7 @@ public class GameFragment extends Fragment implements GameContract.View {
         });
         mBinding.layoutInner.viewFailReplay.setOnClickListener(v -> {
             hideAllDialogView();
-            mPresenter.startGame();
+            mPresenter.startGame(mMax);
         });
 
         mBinding.layoutInner.gameView.setDotClickListener((x, y) -> {
@@ -81,6 +87,32 @@ public class GameFragment extends Fragment implements GameContract.View {
             long end = System.currentTimeMillis();
             System.out.println("userInput cost " + (end - start));
 //            mBinding.layoutInner.gameView.setCatPosition(x, y);
+        });
+
+        mBinding.layoutInner.toolbar.setOnMenuItemClickListener(item -> {
+            switch (item.getItemId()) {
+                case R.id.menu_normal:
+                    hideAllDialogView();
+                    mBinding.layoutInner.gameView.setDotCount(Constants.MAX_NORMAL);
+                    mPresenter.startGame(Constants.MAX_NORMAL);
+                    break;
+                case R.id.menu_small:
+                    hideAllDialogView();
+                    mBinding.layoutInner.gameView.setDotCount(Constants.MAX_SMALL);
+                    mPresenter.startGame(Constants.MAX_SMALL);
+                    break;
+                case R.id.menu_middle:
+                    hideAllDialogView();
+                    mBinding.layoutInner.gameView.setDotCount(Constants.MAX_MIDDLE);
+                    mPresenter.startGame(Constants.MAX_MIDDLE);
+                    break;
+                case R.id.menu_hard:
+                    hideAllDialogView();
+                    mBinding.layoutInner.gameView.setDotCount(Constants.MAX_HARD);
+                    mPresenter.startGame(Constants.MAX_HARD);
+                    break;
+            }
+            return true;
         });
     }
 

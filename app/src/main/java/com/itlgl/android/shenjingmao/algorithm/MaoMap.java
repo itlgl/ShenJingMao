@@ -9,24 +9,31 @@ public class MaoMap {
     public static final int POINT_WALL = -1;
     public static final int POINT_MARK = 1;
 
-    public static int MAX = 9;
-
-    private int[][] mMap = new int[MAX][MAX];
+    private final int mMax;
+    private final int[][] mMap;
     private Point mCatPoint = new Point();
+
+    public MaoMap(int max) {
+        if(max <= 0) {
+            max = Constants.MAX_DEFAULT;
+        }
+        mMax = max;
+        mMap = new int[mMax][mMax];
+    }
 
     public void randomMap() {
         // 清空
-        for (int i = 0; i < MAX; i++) {
-            for (int j = 0; j < MAX; j++) {
+        for (int i = 0; i < mMax; i++) {
+            for (int j = 0; j < mMax; j++) {
                 mMap[i][j] = POINT_EMPTY;
             }
         }
-        mCatPoint.set(MAX / 2, MAX / 2);
+        mCatPoint.set(mMax / 2, mMax / 2);
         // random
-        int count = (int) (Math.random() * 5) + 10;
+        int count = (int) (Math.random() * mMax) + mMax;
         for (int i = 0; i < count; i++) {
-            int x = (int) (Math.random() * MAX);
-            int y = (int) (Math.random() * MAX);
+            int x = (int) (Math.random() * mMax);
+            int y = (int) (Math.random() * mMax);
             if (x == mCatPoint.x && y == mCatPoint.y) {
                 continue;
             }
@@ -38,16 +45,16 @@ public class MaoMap {
         if (map == null) {
             throw new IllegalArgumentException("map is null!");
         }
-        if (map.length != MAX) {
-            throw new IllegalArgumentException("map.length should be " + MAX);
+        if (map.length != mMax) {
+            throw new IllegalArgumentException("map.length should be " + mMax);
         }
         for (int i = 0; i < map.length; i++) {
-            if (map[i] == null || map[i].length != MAX) {
-                throw new IllegalArgumentException("map[" + i + "].length should be " + MAX);
+            if (map[i] == null || map[i].length != mMax) {
+                throw new IllegalArgumentException("map[" + i + "].length should be " + mMax);
             }
         }
-        for (int i = 0; i < MAX; i++) {
-            for (int j = 0; j < MAX; j++) {
+        for (int i = 0; i < mMax; i++) {
+            for (int j = 0; j < mMax; j++) {
                 mMap[i][j] = map[i][j];
             }
         }
@@ -191,8 +198,8 @@ public class MaoMap {
 
     private int[][] copyMap(int[][] map) {
         int[][] copyMap = new int[map.length][map.length];
-        for (int i = 0; i < MAX; i++) {
-            for (int j = 0; j < MAX; j++) {
+        for (int i = 0; i < mMax; i++) {
+            for (int j = 0; j < mMax; j++) {
                 copyMap[i][j] = map[i][j];
             }
         }
@@ -205,8 +212,8 @@ public class MaoMap {
 
     public List<Point> getWallPoints() {
         List<Point> points = new ArrayList<>();
-        for (int i = 0; i < MAX; i++) {
-            for (int j = 0; j < MAX; j++) {
+        for (int i = 0; i < mMax; i++) {
+            for (int j = 0; j < mMax; j++) {
                 if (mMap[i][j] == POINT_WALL) {
                     points.add(new Point(i, j));
                 }
@@ -216,8 +223,8 @@ public class MaoMap {
     }
 
     public void printMap() {
-        for (int i = 0; i < MAX; i++) {
-            for (int j = 0; j < MAX; j++) {
+        for (int i = 0; i < mMax; i++) {
+            for (int j = 0; j < mMax; j++) {
                 System.out.print(mMap[i][j]);
                 System.out.print(" ");
             }
@@ -225,11 +232,11 @@ public class MaoMap {
         }
     }
 
-    public static List<Point> neighborDotsList(Point point) {
+    public List<Point> neighborDotsList(Point point) {
         return neighborDotsList(point.x, point.y);
     }
 
-    public static List<Point> neighborDotsList(int x, int y) {
+    public List<Point> neighborDotsList(int x, int y) {
         Point[] neighborDots = neighborDotsArray(x, y);
 
         List<Point> result = new ArrayList<>();
@@ -267,25 +274,29 @@ public class MaoMap {
         return neighborDots;
     }
 
-    public static boolean isValidPoint(int x, int y) {
-        return x >= 0 && x < MaoMap.MAX && y >= 0 && y < MaoMap.MAX;
+    public boolean isValidPoint(int x, int y) {
+        return x >= 0 && x < mMax && y >= 0 && y < mMax;
     }
 
-    public static boolean isValidPoint(Point point) {
+    public boolean isValidPoint(Point point) {
         if (point == null) return false;
         return isValidPoint(point.x, point.y);
     }
 
-    public static boolean isBorderPoint(Point point) {
+    public boolean isBorderPoint(Point point) {
         return isBorderPoint(point.x, point.y);
     }
 
-    public static boolean isBorderPoint(int x, int y) {
-        return x == 0 || y == 0 || x == MaoMap.MAX - 1 || y == MaoMap.MAX - 1;
+    public boolean isBorderPoint(int x, int y) {
+        return x == 0 || y == 0 || x == mMax - 1 || y == mMax - 1;
+    }
+
+    public static boolean isBorderPoint(int x, int y, int max) {
+        return x == 0 || y == 0 || x == max - 1 || y == max - 1;
     }
 
     public static void main(String[] args) {
-        MaoMap maoMap = new MaoMap();
+        MaoMap maoMap = new MaoMap(Constants.MAX_DEFAULT);
         maoMap.randomMap();
         maoMap.printMap();
         maoMap.getNextStep();

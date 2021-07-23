@@ -11,6 +11,11 @@
 
     <string name="game_share_tip">通知好友</string>
 
+    <string name="menu_text_small">小地图</string>
+    <string name="menu_text_normal">普通地图</string>
+    <string name="menu_text_middle">中地图</string>
+    <string name="menu_text_hard">大地图</string>
+
     <string-array name="game_success_title_1">
         <item>塞外高手</item>
         <item>神精病博士</item>
