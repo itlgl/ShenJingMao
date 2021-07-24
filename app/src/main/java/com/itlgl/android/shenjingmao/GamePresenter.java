@@ -23,7 +23,7 @@ public class GamePresenter implements GameContract.Presenter {
 
     @Override
     public void startGame(int max) {
-        if(max <= Constants.MAX_DEFAULT) {
+        if(max <= 0) {
             max = Constants.MAX_DEFAULT;
         }
         mMax = max;

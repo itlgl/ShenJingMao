@@ -92,26 +92,32 @@ public class GameFragment extends Fragment implements GameContract.View {
         mBinding.layoutInner.toolbar.setOnMenuItemClickListener(item -> {
             switch (item.getItemId()) {
                 case R.id.menu_normal:
+                    mMax = Constants.MAX_NORMAL;
                     hideAllDialogView();
-                    mBinding.layoutInner.gameView.setDotCount(Constants.MAX_NORMAL);
-                    mPresenter.startGame(Constants.MAX_NORMAL);
+                    mBinding.layoutInner.gameView.setDotCount(mMax);
+                    mPresenter.startGame(mMax);
                     break;
                 case R.id.menu_small:
+                    mMax = Constants.MAX_SMALL;
                     hideAllDialogView();
-                    mBinding.layoutInner.gameView.setDotCount(Constants.MAX_SMALL);
-                    mPresenter.startGame(Constants.MAX_SMALL);
+                    mBinding.layoutInner.gameView.setDotCount(mMax);
+                    mPresenter.startGame(mMax);
                     break;
                 case R.id.menu_middle:
+                    mMax = Constants.MAX_MIDDLE;
                     hideAllDialogView();
-                    mBinding.layoutInner.gameView.setDotCount(Constants.MAX_MIDDLE);
-                    mPresenter.startGame(Constants.MAX_MIDDLE);
+                    mBinding.layoutInner.gameView.setDotCount(mMax);
+                    mPresenter.startGame(mMax);
                     break;
                 case R.id.menu_hard:
+                    mMax = Constants.MAX_HARD;
                     hideAllDialogView();
-                    mBinding.layoutInner.gameView.setDotCount(Constants.MAX_HARD);
-                    mPresenter.startGame(Constants.MAX_HARD);
+                    mBinding.layoutInner.gameView.setDotCount(mMax);
+                    mPresenter.startGame(mMax);
                     break;
             }
+
+
             return true;
         });
     }
