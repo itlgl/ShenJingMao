@@ -75,6 +75,12 @@ public class GameView2 extends View {
         mDotCount = dotCount;
         mMap = new int[mDotCount][mDotCount];
         mDrawCat = false;
+
+        // 根据dot大小适配一下猫图片的大小
+        // dot-45 cat-64 64/45=1.42
+        int dotWidth = getDotWidth();
+        mStayDrawable.setBounds(0, 0, (int) (dotWidth * 1.42f), (int) (dotWidth * 1.42f * mStayDrawable.getIntrinsicHeight() / mStayDrawable.getIntrinsicWidth()));
+        mSurroundDrawable.setBounds(0, 0, (int) (dotWidth * 1.42f), (int) (dotWidth * 1.42f * mSurroundDrawable.getIntrinsicHeight() / mSurroundDrawable.getIntrinsicWidth()));
     }
 
     private void initView() {
